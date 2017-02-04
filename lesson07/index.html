@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		.color-red{color: red;}
+		.color-blue{color: blue;}
+		.is-loading{ background: red; }
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css">
+</head>
+<body>
+<div id="root">
+<!--
+	<input type="text" id="input" v-model="message">
+	<p>The value of the inue is:{{ message }}</p>
+	-->
+	<ul>
+		<li v-for="name in names">{{name}}</li>
+		<!--li v-for="name in names" v-text="name"></li-->
+	</ul>
+	<input id="input" v-model="newName"></input>
+	<button id="button" @click="addName" v-bind:title="title">add</button>
+	<button v-bind:class="{'is-loading':isloading}" v-bind:disabled="isDisabled" @click="toggleClass"> click me</button>
+	<h1 :class='className'>Hello world</h1>
+	{{reversedMessage}}
+
+	<div id="root1">
+			<task-list></task-list>
+	</div>
+
+</div>
+
+<script src="https://unpkg.com/vue@2.1.4/dist/vue.js"></script>
+<script src="main.js"></script>
+
+<script>
+
+var app = new Vue({
+	el: '#root',
+	data: {
+		newName:"",
+		names:['Joe','Mery','Jane','Jacky'],
+		title: 'Now the title is being set through JavaScript',
+		className: 'color-red',
+		isloading: false,
+		isDisabled: false,
+		message:"hello world"
+	},
+	methods:{
+		addName(){
+			this.names.push(this.newName);
+			this.newName = '';
+		},
+		toggleClass(){
+			this.isloading = true;
+			this.isDisabled = true;
+		}
+	},
+	computed:{
+		reversedMessage: function(){
+			return this.message.split("").reverse().join("");
+		}
+	}
+	// mounted(){
+	// 	document.querySelector("#button").addEventListener("click",()=>{
+	// 			let name = document.querySelector("#input");
+
+	// 			app.names.push(name.value);
+	// 			name.value = '';
+	// 		})
+	// }
+});
+
+
+</script>
+</body>
