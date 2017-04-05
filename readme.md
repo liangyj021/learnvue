@@ -1,3 +1,3 @@
 hello vue
 
-[laracasts]( https://laracasts.com/series/learn-vue-2-step-by-step)
+demo from [laracasts]( https://laracasts.com/series/learn-vue-2-step-by-step)
